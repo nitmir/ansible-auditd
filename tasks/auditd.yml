@@ -7,7 +7,7 @@
       package: name={{ auditd_pkg }} state=present update_cache=yes
 
     - name: retrieve suid/sgid files list
-      command: find / -perm /u=s,g=s -type f
+      command: find / -xdev -perm /u=s,g=s -type f
       register: sugid_files
       ignore_errors: true
       changed_when: false
